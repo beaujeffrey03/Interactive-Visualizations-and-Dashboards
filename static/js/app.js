@@ -95,16 +95,32 @@ function DrawBubblechart(sampleId) {
 }
 
 function ShowMetadata(sampleId) {
-    console.log(`ShowMetadata(${sampleId})`);
+    // console.log(`ShowMetadata(${sampleId})`);
 
+    d3.json('data/samples.json').then(data => {
 
-        
+        var metadatas = data.metadata;
+        var resultArray = metadatas.filter(s => s.id == sampleId);
+        var result = resultArray[0];
+
+        console.log(result);
+
+        // return filteredData.forEach((sighting) => {
+        //     var row = tbody.append('tr');
+        //     Object.entries(sighting).forEach(([key, value]) => {
+        //       var cell = row.append('td');
+        //       cell.text(value);
+        //     });
+        //   })
+
+    });
+
 }
 
 
 // make function for event handler
 function optionChanged(newSampleId) {
-    console.log(`User selected ${newSampleId}`);
+    // console.log(`User selected ${newSampleId}`);
 
     DrawBargraph(newSampleId);
     DrawBubblechart(newSampleId);
@@ -113,14 +129,14 @@ function optionChanged(newSampleId) {
 
 
 function InitDashboard() {
-    console.log('InitDashboard()')
+    // console.log('InitDashboard()')
 
     // Populate the dropdown
     var selector = d3.select('#selDataset');
 
     d3.json('data/samples.json').then(data => {
 
-        console.log(data);
+        // console.log(data);
 
         var sampleNames = data.names;
 
