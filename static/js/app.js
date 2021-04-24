@@ -1,4 +1,4 @@
-// Some of the code here comes from office hours with Dom.
+// Some of the code here comes from office hours with Dom. Also thanks to TA Benji helping me with the loop fo
 
 // console.log('app.js loaded');
 
@@ -103,20 +103,26 @@ function ShowMetadata(sampleId) {
         var resultArray = metadatas.filter(s => s.id == sampleId);
         var result = resultArray[0];
 
-        console.log(result);
+        // console.log(result);
 
-        // return filteredData.forEach((sighting) => {
-        //     var row = tbody.append('tr');
-        //     Object.entries(sighting).forEach(([key, value]) => {
-        //       var cell = row.append('td');
-        //       cell.text(value);
-        //     });
-        //   })
+        output = d3.select('#sample-metadata');
+
+        var convert_to_html  = '<h5>';
+
+        for (var key in result) {
+            convert_to_html += key + ': ' + result[key] + '<br>';
+        }
+
+        convert_to_html += '</h5>';
+
+        // console.log(convert_to_html);
+
+        // clear table
+        output.html(convert_to_html);
 
     });
 
 }
-
 
 // make function for event handler
 function optionChanged(newSampleId) {
